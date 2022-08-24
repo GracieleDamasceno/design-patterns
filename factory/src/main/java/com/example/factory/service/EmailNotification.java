@@ -1,5 +1,7 @@
 package com.example.factory.service;
 
+import com.example.factory.dto.DeliveryResponseDTO;
+import com.example.factory.dto.MessageRequestDTO;
 import com.example.factory.interfaces.Notification;
 import lombok.extern.slf4j.Slf4j;
 
@@ -7,8 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 public class EmailNotification implements Notification {
 
   @Override
-  public boolean deliverMessage(String message) {
+  public DeliveryResponseDTO deliverMessage(MessageRequestDTO message) {
     log.info("Email is the selected choice of delivery! The message to send is: " + message);
-    return false;
+
+    return DeliveryResponseDTO.builder()
+        .delivered(true)
+        .deliveryStatus("Message successfully delivered through email")
+        .build();
   }
 }
