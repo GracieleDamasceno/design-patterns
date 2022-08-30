@@ -35,5 +35,4 @@ public enum NotificationTypeEnum {
   };
 
   public abstract Notification getInstance();
-
 }

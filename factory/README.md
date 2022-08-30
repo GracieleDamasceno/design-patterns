@@ -1,17 +1,13 @@
 ## Factory Pattern
 
-To learn more about this design pattern, access the [refactoring.guru.]([Factory Method](https://refactoring.guru/design-patterns/factory-method))
+To learn more about this design pattern, access the awesome [refactoring.guru.](https://refactoring.guru/design-patterns/factory-method)
 
 Imagine that we are dealing with a application that has to deliver notifications to clients. In our scenario, we have multiple ways of delivering this notification, being:
 
 - SMS
-
 - Email
-
 - Mail letter
-
 - Push notification
-
 - Carrier pigeon
 
 
