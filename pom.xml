@@ -28,7 +28,8 @@
 
 	<modules>
 		<module>factory</module>
-	</modules>
+    <module>prototype</module>
+  </modules>
 
 	<build>
 		<plugins>
