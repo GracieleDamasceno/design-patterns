@@ -8,7 +8,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Cryptocurrency implements Cloneable{
+public class Cryptocurrency {
 
   private Integer id;
   private SymbolEnum symbol;
@@ -19,14 +19,17 @@ public class Cryptocurrency implements Cloneable{
   private BigDecimal percentChange1h;
   private BigDecimal percentChange7d;
 
-  @Override
-  protected Cryptocurrency clone() throws CloneNotSupportedException {
-      Cryptocurrency clone = (Cryptocurrency) super.clone();
-      clone.rank = this.rank;
-      clone.priceUSD = this.priceUSD;
-      clone.percentChange1h = this.percentChange1h;
-      clone.percentChange24h = this.percentChange24h;
-      clone.percentChange7d = this.percentChange7d;
-      return clone;
+  /*
+  * Since the clone method from Cloneable class is broken, we use a copy constructor.
+  * */
+  public Cryptocurrency(Cryptocurrency cryptocurrency) {
+    this(cryptocurrency.getId(),
+        cryptocurrency.getSymbol(),
+        cryptocurrency.getName(),
+        cryptocurrency.getRank(),
+        cryptocurrency.getPriceUSD(),
+        cryptocurrency.getPercentChange24h(),
+        cryptocurrency.getPercentChange1h(),
+        cryptocurrency.getPercentChange7d());
   }
 }
