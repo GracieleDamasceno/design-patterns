@@ -1,7 +1,7 @@
 package com.example.prototype.service;
 
 import com.example.prototype.client.CryptocurrencyClient;
-import com.example.prototype.domain.Cryptocurrency;
+import com.example.prototype.dto.CryptocurrencyDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service;
 public class CryptocurrencyService {
 
   private final CryptocurrencyClient cryptocurrencyClient;
-  private static final String BITCOIN_ID = "90";
 
-  public Cryptocurrency getCryptocurrencyValues(){
-    return cryptocurrencyClient.getCryptocurrency(BITCOIN_ID).iterator().next();
+  public CryptocurrencyDTO getCryptocurrencyValues(String idCryptocurrency){
+    return cryptocurrencyClient.getCryptocurrency(idCryptocurrency).iterator().next();
   }
 
 }

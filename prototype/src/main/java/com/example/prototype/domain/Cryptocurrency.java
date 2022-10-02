@@ -1,6 +1,5 @@
 package com.example.prototype.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,17 +22,11 @@ public class Cryptocurrency {
 
   private Integer rank;
 
-  @JsonProperty("price_usd")
   private BigDecimal priceUSD;
 
-  @JsonProperty("percent_change_24h")
-  private BigDecimal percentChange24h;
+  private BigDecimal volume24;
 
-  @JsonProperty("percent_change_1h")
-  private BigDecimal percentChange1h;
-
-  @JsonProperty("percent_change_7d")
-  private BigDecimal percentChange7d;
+  private BigDecimal marketCapUSD;
 
   /*
   * Since the clone method from Cloneable class is broken, we use a copy constructor.
@@ -44,8 +37,7 @@ public class Cryptocurrency {
         cryptocurrency.getName(),
         cryptocurrency.getRank(),
         cryptocurrency.getPriceUSD(),
-        cryptocurrency.getPercentChange24h(),
-        cryptocurrency.getPercentChange1h(),
-        cryptocurrency.getPercentChange7d());
+        cryptocurrency.getVolume24(),
+        cryptocurrency.getMarketCapUSD());
   }
 }
