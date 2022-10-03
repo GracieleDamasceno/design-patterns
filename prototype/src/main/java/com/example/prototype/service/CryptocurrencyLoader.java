@@ -23,7 +23,7 @@ public class CryptocurrencyLoader {
         .symbol(SymbolEnum.BTC)
         .rank(1)
         .volume24(new BigDecimal("24582667004"))
-        .priceUSD(new BigDecimal("4768681"))
+        .priceUSD(new BigDecimal("47686.81"))
         .marketCapUSD(new BigDecimal("902104193385"))
         .build();
 
