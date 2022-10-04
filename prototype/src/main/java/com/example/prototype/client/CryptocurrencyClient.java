@@ -1,6 +1,6 @@
 package com.example.prototype.client;
 
-import com.example.prototype.dto.CryptocurrencyDTO;
+import com.example.prototype.dto.in.CryptocurrencyDTO;
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
