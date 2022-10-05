@@ -19,9 +19,8 @@ public class CryptocurrencyService {
   private final CryptocurrencyLoader cryptocurrencyLoader;
 
   public CryptocurrencyReport getCryptocurrencyReport(CryptocurrencyTypeEnum cryptocurrencyTypeEnum){
+    Cryptocurrency cryptocurrencyAtPurchase = cryptocurrencyLoader.getCryptocurrencyLoaded(cryptocurrencyTypeEnum);
     Cryptocurrency cryptocurrencyNow = getUpdatedCryptocurrencyValues(cryptocurrencyTypeEnum);
-    Cryptocurrency cryptocurrencyAtPurchase = cryptocurrencyLoader.getCryptocurrencyLoaded(
-        cryptocurrencyTypeEnum);
 
     return CryptocurrencyReport.builder()
         .cryptocurrencyCurrentValues(cryptocurrencyNow)
@@ -34,8 +33,8 @@ public class CryptocurrencyService {
   }
 
   private Cryptocurrency getUpdatedCryptocurrencyValues(CryptocurrencyTypeEnum cryptocurrencyTypeEnum){
-    final CryptocurrencyDTO cryptocurrencyDTO = cryptocurrencyClient
-        .getCryptocurrency(cryptocurrencyTypeEnum.getId()).iterator().next();
+    final CryptocurrencyDTO cryptocurrencyDTO =
+        cryptocurrencyClient.getCryptocurrency(cryptocurrencyTypeEnum.getId()).iterator().next();
 
     Cryptocurrency cryptocurrencyLoaded = cryptocurrencyLoader.getCryptocurrencyLoaded(cryptocurrencyTypeEnum);
 
