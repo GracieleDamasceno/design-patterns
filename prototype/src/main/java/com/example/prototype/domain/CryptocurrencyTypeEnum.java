@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum CryptocurrencyTypesEnum {
+public enum CryptocurrencyTypeEnum {
   BTC("90"),
   ETH ("80");
 

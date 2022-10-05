@@ -16,7 +16,7 @@ public class Cryptocurrency {
 
   private String id;
 
-  private CryptocurrencyTypesEnum symbol;
+  private CryptocurrencyTypeEnum symbol;
 
   private String name;
 

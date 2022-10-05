@@ -5,7 +5,7 @@ import static com.example.prototype.mapper.CryptocurrencyDTOMapper.updateLoadedP
 import com.example.prototype.client.CryptocurrencyClient;
 import com.example.prototype.domain.Cryptocurrency;
 import com.example.prototype.domain.CryptocurrencyReport;
-import com.example.prototype.domain.CryptocurrencyTypesEnum;
+import com.example.prototype.domain.CryptocurrencyTypeEnum;
 import com.example.prototype.dto.in.CryptocurrencyDTO;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
@@ -18,26 +18,27 @@ public class CryptocurrencyService {
   private final CryptocurrencyClient cryptocurrencyClient;
   private final CryptocurrencyLoader cryptocurrencyLoader;
 
-  public CryptocurrencyReport getCryptocurrencyReport(CryptocurrencyTypesEnum cryptocurrencyTypesEnum){
-    Cryptocurrency cryptocurrencyNow = getUpdatedCryptocurrencyValues(cryptocurrencyTypesEnum);
-    Cryptocurrency cryptocurrencyAtPurchase = cryptocurrencyLoader.getCryptocurrencyLoaded(cryptocurrencyTypesEnum);
+  public CryptocurrencyReport getCryptocurrencyReport(CryptocurrencyTypeEnum cryptocurrencyTypeEnum){
+    Cryptocurrency cryptocurrencyNow = getUpdatedCryptocurrencyValues(cryptocurrencyTypeEnum);
+    Cryptocurrency cryptocurrencyAtPurchase = cryptocurrencyLoader.getCryptocurrencyLoaded(
+        cryptocurrencyTypeEnum);
 
     return CryptocurrencyReport.builder()
-        .cryptocurrencyNow(cryptocurrencyNow)
-        .cryptocurrencyAtPurchase(cryptocurrencyAtPurchase)
-        .variationOfRank(calculateVariation(cryptocurrencyAtPurchase.getRank(), cryptocurrencyNow.getRank()))
-        .variationOfPriceUSD(calculateVariation(cryptocurrencyAtPurchase.getPriceUSD(), cryptocurrencyNow.getPriceUSD()))
-        .variationOfVolume24(calculateVariation(cryptocurrencyAtPurchase.getVolume24(), cryptocurrencyNow.getVolume24()))
-        .variationOfMarketCapUSD(calculateVariation(cryptocurrencyAtPurchase.getMarketCapUSD(), cryptocurrencyNow.getMarketCapUSD()))
+        .cryptocurrencyCurrentValues(cryptocurrencyNow)
+        .cryptocurrencyPurchaseValues(cryptocurrencyAtPurchase)
+        .rankVariation(calculateVariation(cryptocurrencyAtPurchase.getRank(), cryptocurrencyNow.getRank()))
+        .priceUSDVariation(calculateVariation(cryptocurrencyAtPurchase.getPriceUSD(), cryptocurrencyNow.getPriceUSD()))
+        .volume24Variation(calculateVariation(cryptocurrencyAtPurchase.getVolume24(), cryptocurrencyNow.getVolume24()))
+        .marketCapUSDVariation(calculateVariation(cryptocurrencyAtPurchase.getMarketCapUSD(), cryptocurrencyNow.getMarketCapUSD()))
         .build();
   }
 
-  private Cryptocurrency getUpdatedCryptocurrencyValues(CryptocurrencyTypesEnum cryptocurrencyTypesEnum){
+  private Cryptocurrency getUpdatedCryptocurrencyValues(CryptocurrencyTypeEnum cryptocurrencyTypeEnum){
     final CryptocurrencyDTO cryptocurrencyDTO = cryptocurrencyClient
-        .getCryptocurrency(cryptocurrencyTypesEnum.getId()).iterator().next();
+        .getCryptocurrency(cryptocurrencyTypeEnum.getId()).iterator().next();
 
-    Cryptocurrency cryptocurrencyLoaded = cryptocurrencyLoader.getCryptocurrencyLoaded(
-        cryptocurrencyTypesEnum);
+    Cryptocurrency cryptocurrencyLoaded = cryptocurrencyLoader.getCryptocurrencyLoaded(cryptocurrencyTypeEnum);
+
     return updateLoadedPrototypeWithCurrentValues(cryptocurrencyDTO, cryptocurrencyLoaded);
   }
 

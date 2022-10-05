@@ -1,16 +1,32 @@
 package com.example.prototype.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Builder
+@Getter
+@Setter
 public class CryptocurrencyReport {
 
-  private Cryptocurrency cryptocurrencyNow;
-  private Cryptocurrency cryptocurrencyAtPurchase;
-  private Integer variationOfRank;
-  private BigDecimal variationOfPriceUSD;
-  private BigDecimal variationOfVolume24;
-  private BigDecimal variationOfMarketCapUSD;
+  @JsonProperty("cryptocurrency_current_values")
+  private Cryptocurrency cryptocurrencyCurrentValues;
+
+  @JsonProperty("cryptocurrency_purchased_values")
+  private Cryptocurrency cryptocurrencyPurchaseValues;
+
+  @JsonProperty("rank_variation")
+  private Integer rankVariation;
+
+  @JsonProperty("priceUSD_variation")
+  private BigDecimal priceUSDVariation;
+
+  @JsonProperty("volume24_variation")
+  private BigDecimal volume24Variation;
+
+  @JsonProperty("marketcapUSD_variation")
+  private BigDecimal marketCapUSDVariation;
 
 }
