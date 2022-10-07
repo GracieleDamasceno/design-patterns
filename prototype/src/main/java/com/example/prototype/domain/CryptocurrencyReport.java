@@ -20,13 +20,13 @@ public class CryptocurrencyReport {
   @JsonProperty("rank_variation")
   private Integer rankVariation;
 
-  @JsonProperty("priceUSD_variation")
+  @JsonProperty("price_usd_variation")
   private BigDecimal priceUSDVariation;
 
   @JsonProperty("volume24_variation")
   private BigDecimal volume24Variation;
 
-  @JsonProperty("marketcapUSD_variation")
+  @JsonProperty("marketcap_usd_variation")
   private BigDecimal marketCapUSDVariation;
 
 }
