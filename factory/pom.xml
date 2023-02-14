@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>factory</artifactId>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>19</java.version>
 		<version>${project.parent.version}</version>
 	</properties>
 	<dependencies>

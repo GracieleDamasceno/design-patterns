@@ -16,7 +16,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>18</java.version>
+		<java.version>19</java.version>
 	</properties>
 
 	<dependencies>
@@ -29,7 +29,8 @@
 	<modules>
 		<module>factory</module>
     <module>prototype</module>
-  </modules>
+		<module>adapter</module>
+	</modules>
 
 	<build>
 		<plugins>
