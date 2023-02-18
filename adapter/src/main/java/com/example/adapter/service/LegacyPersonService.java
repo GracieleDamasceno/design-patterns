@@ -1,22 +1,22 @@
 package com.example.adapter.service;
 
 import com.example.adapter.domain.Person;
+import com.example.adapter.domain.PersonOutput;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 @Slf4j
 @Service
-public class LegacyPersonService {
+@RequiredArgsConstructor
+public class LegacyPersonService implements PersonOutput {
+    private final XmlMapper xmlMapper;
 
-    @Autowired
-    private XmlMapper xmlMapper;
-
-    public String getPersonXML() throws JsonProcessingException {
-        // Let's pretend that we did a hiper-mega conection to our legacy database.
+    public String getPersonXML() {
+        // Let's pretend that we did a hiper-mega connection to our legacy database.
         log.info("Retrieving data from legacy table");
 
         Person person = Person.builder()
@@ -28,6 +28,11 @@ public class LegacyPersonService {
                 .email("john.titor@mail.com")
                 .build();
 
-        return xmlMapper.writeValueAsString(person);
+        try {
+            return xmlMapper.writeValueAsString(person);
+        } catch (JsonProcessingException e) {
+            log.info("Failure while converting data to XML.");
+            throw new RuntimeException(e);
+        }
     }
 }
