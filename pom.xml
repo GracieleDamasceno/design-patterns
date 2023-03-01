@@ -30,7 +30,8 @@
 		<module>factory</module>
     <module>prototype</module>
 		<module>adapter</module>
-	</modules>
+        <module>bridge</module>
+    </modules>
 
 	<build>
 		<plugins>

@@ -3,7 +3,6 @@ package com.example.adapter.domain;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
