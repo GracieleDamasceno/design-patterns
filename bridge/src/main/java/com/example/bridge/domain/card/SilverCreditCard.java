@@ -7,6 +7,11 @@ public class SilverCreditCard implements CreditCard {
     }
 
     @Override
+    public String getCreditCardType() {
+        return "SILVER";
+    }
+
+    @Override
     public double getServiceTaxPercentage() {
         return 9.99;
     }

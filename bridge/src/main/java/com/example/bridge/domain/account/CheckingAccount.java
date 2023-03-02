@@ -9,13 +9,13 @@ public class CheckingAccount extends BankAccount{
     }
 
     @Override
-    String getCardInformation() {
-        return "Checking Account Credit Card Offer\n" +
+    public String getCreditCardInformation() {
+        return creditCard.getCreditCardType()+" Credit Card Offer for Checking Account:\n" +
                 "Interest Rate: " + creditCard.getInterestRatePercentage() + "%. \n" +
                 "Service Tax (Annual): " + creditCard.getServiceTaxPercentage() + "%. \n" +
-                "Has Cashback? " + creditCard.hasCashback() + "\n" +
-                "Has Insurance? " + creditCard.hasInsurance() + "\n" +
-                "Has Air Miles? " + creditCard.hasAirMiles();
+                "Provides Cashback? " + creditCard.hasCashback() + "\n" +
+                "Provides Insurance? " + creditCard.hasInsurance() + "\n" +
+                "Provides Air Miles? " + creditCard.hasAirMiles();
     }
 
 }

@@ -10,5 +10,5 @@ public abstract class BankAccount {
         this.creditCard = creditCard;
     }
 
-    abstract String getCardInformation();
+    public abstract String getCreditCardInformation();
 }

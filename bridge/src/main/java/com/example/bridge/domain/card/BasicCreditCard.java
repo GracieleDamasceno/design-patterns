@@ -7,6 +7,11 @@ public class BasicCreditCard implements CreditCard {
     }
 
     @Override
+    public String getCreditCardType() {
+        return "BASIC";
+    }
+
+    @Override
     public double getServiceTaxPercentage() {
         return 10.99;
     }

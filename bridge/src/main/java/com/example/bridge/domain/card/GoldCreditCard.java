@@ -7,6 +7,11 @@ public class GoldCreditCard implements CreditCard {
     }
 
     @Override
+    public String getCreditCardType() {
+        return "GOLD";
+    }
+
+    @Override
     public double getServiceTaxPercentage() {
         return 8.99;
     }
